@@ -25,6 +25,11 @@ namespace Technologies.AspNet5
             // Add MVC to the request pipeline.
             app.UseMvc(routes => {
                 routes.MapRoute(
+                    name: "areaRoute",
+                    template: "{area:exists}/{controller}/{action}",
+                    defaults: new { controller = "Home", action = "Index" });
+
+                routes.MapRoute(
                    name: "default",
                    template: "{controller}/{action}/{id?}",
                    defaults: new { controller = "Home", action = "Index" });

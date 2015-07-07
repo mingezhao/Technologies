@@ -21,7 +21,7 @@
       "": "*.{js,css,map,gzip}"
     },
     "angular-ui": {
-      "": "*.*"
+      "": "build/*.*"
     }
   }
 }

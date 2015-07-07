@@ -1,10 +1,11 @@
-﻿/// <binding BeforeBuild='install, min' />
+﻿/// <binding BeforeBuild='min, install' />
 /*
 This file in the main entry point for defining grunt tasks and using grunt plugins.
 Click here to learn more. http://go.microsoft.com/fwlink/?LinkID=513275&clcid=0x409
 */
 module.exports = function (grunt) {
     grunt.initConfig({
+        clean: ["wwwroot/lib/*", "wwwroot/temp/*"],
         bower: {
             install: {
                 options: {
@@ -38,10 +39,11 @@ module.exports = function (grunt) {
         //}
     });
 
-    grunt.registerTask("install", ["bower:install"]);
+    grunt.registerTask("install", ["clean", "bower:install"]);
     grunt.registerTask("min", ["cssmin"]);
 
     grunt.loadNpmTasks("grunt-bower-task");
     grunt.loadNpmTasks("grunt-contrib-cssmin");
+    grunt.loadNpmTasks("grunt-contrib-clean");
     //grunt.loadNpmTasks("grunt-contrib-uglify");
 };

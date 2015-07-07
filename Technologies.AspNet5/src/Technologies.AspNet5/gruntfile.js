@@ -25,25 +25,28 @@ module.exports = function (grunt) {
                     ext: '.min.css'
                 }]
             }
+        },
+        uglify: {
+            options: {
+                mangle: false
+            },
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: 'wwwroot/js',
+                    src: ['*.js', '!*.min.js'],
+                    dest: 'wwwroot/js',
+                    ext: '.min.js'
+                }]
+            }
         }
-        //uglify: {
-        //    buildCss: {
-        //        options: {
-        //            mangle: true,
-        //            preserveComments: 'false',
-        //        },
-        //        files: {
-        //            'wwwroot/css/site.min.css': ['wwwroot/css/site.css']
-        //        }
-        //    },
-        //}
     });
 
     grunt.registerTask("install", ["clean", "bower:install"]);
-    grunt.registerTask("min", ["cssmin"]);
+    grunt.registerTask("min", ["cssmin", "uglify"]);
 
     grunt.loadNpmTasks("grunt-bower-task");
     grunt.loadNpmTasks("grunt-contrib-cssmin");
     grunt.loadNpmTasks("grunt-contrib-clean");
-    //grunt.loadNpmTasks("grunt-contrib-uglify");
+    grunt.loadNpmTasks("grunt-contrib-uglify");
 };

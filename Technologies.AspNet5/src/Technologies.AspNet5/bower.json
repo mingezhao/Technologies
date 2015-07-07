@@ -6,7 +6,8 @@
     "jquery": "2.1.4",
     "bootstrap": "3.3.5",
     "angular": "1.4.2",
-    "angular-ui": "0.4.0"
+    "angular-ui": "0.4.0",
+    "font-awesome": "*"
   },
   "exportsOverride": {
     "bootstrap": {
@@ -22,6 +23,10 @@
     },
     "angular-ui": {
       "": "build/*.*"
+    },
+    "font-awesome": {
+      "css": "css/*.*",
+      "fonts": "fonts/*.*"
     }
   }
 }

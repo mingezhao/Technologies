@@ -6,6 +6,7 @@ using Microsoft.AspNet.Mvc;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Net.Http;
+using Technologies.AspNet5.Models;
 
 namespace Technologies.AspNet5.Controllers
 {
@@ -13,16 +14,40 @@ namespace Technologies.AspNet5.Controllers
     {
         public async Task<IActionResult> Index()
         {
-            var fontAwesomeClasses = new List<string>();
+            var model = new IconsModel()
+            {
+                Glyphicons = await GetClasses("fa","~/lib/font-awesome/css/font-awesome.css"),
+                FontAwesome = await GetClasses("glyphicon", "~/lib/bootstrap/css/bootstrap.css"),
+            };
 
+            return View(model);
+        }
+
+        [NonAction]
+        private async Task<List<string>> GetClasses(string prefix, string uri)
+        {
+            var classes = new List<string>();
             var content = string.Empty;
-            using (var client = new HttpClient()) {
-                content = await client.GetStringAsync(new Uri(new Uri("http://"+this.Request.Host.ToString()), Url.Content("~/lib/font-awesome/css/font-awesome.css")));
+
+            // Get css content
+            using (var client = new HttpClient())
+            {
+                content = await client.GetStringAsync(new Uri(new Uri("http://" + this.Request.Host.ToString()), Url.Content(uri)));
             }
 
-            MatchCollection match = Regex.Matches(content, @"\.(fa[a-z|A-Z|-]*):before", RegexOptions.IgnoreCase);
+            // Find matched values with regex
+            var pattern = string.Format(@"\.({0}[a-z|A-Z|-]*):before", prefix);
+            MatchCollection matches = Regex.Matches(content, pattern, RegexOptions.IgnoreCase);
 
-            return View();
+            foreach (Match match in matches)
+            {
+                if (match.Success)
+                {
+                    classes.Add(match.Groups[1].Value);
+                }
+            }
+
+            return classes;
         }
     }
 }

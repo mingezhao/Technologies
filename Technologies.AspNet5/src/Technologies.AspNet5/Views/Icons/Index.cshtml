@@ -25,7 +25,7 @@
         </div>
     </div>
 </header>
-<div>
+<div ng-controller="IconsCtrl">
     <header class="jumbotron" id="overview">
         <div class="container">
             <h1>AngularUI</h1>
@@ -36,9 +36,24 @@
     <div class="container">
         <section id="glyphicons">
             <h1 class="page-header">Glyphicons</h1>
+            <ul>
+                <li ng-repeat="icon in Glyphicons">
+                    <span class=".glyphicons .{{icon}}"></span>
+                </li>
+            </ul>
         </section>
         <section id="fontawesome">
             <h1 class="page-header">Font Awesome</h1>
         </section>
     </div>
 </div>
+
+@section scripts
+{
+    <script>
+        angular.module('app', []).
+            controller('IconsCtrl', function ($scope) {
+                //var data = @Html.Raw()
+            });
+    </script>
+}

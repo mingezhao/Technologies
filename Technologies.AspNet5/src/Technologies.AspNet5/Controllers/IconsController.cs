@@ -12,15 +12,21 @@ namespace Technologies.AspNet5.Controllers
 {
     public class IconsController : Controller
     {
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public IActionResult Index()
         {
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetIcons() {
             var model = new IconsModel()
             {
-                Glyphicons = await GetClasses("fa","~/lib/font-awesome/css/font-awesome.css"),
-                FontAwesome = await GetClasses("glyphicon", "~/lib/bootstrap/css/bootstrap.css"),
+                FontAwesome = await GetClasses("fa", "~/lib/font-awesome/css/font-awesome.css"),
+                Glyphicons = await GetClasses("glyphicon", "~/lib/bootstrap/css/bootstrap.css"),
             };
 
-            return View(model);
+            return Json(model);
         }
 
         [NonAction]

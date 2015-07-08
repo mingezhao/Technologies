@@ -15,7 +15,7 @@
     "Microsoft.AspNet.Mvc.TagHelpers": "6.0.0-beta4",
     // Logging
     "Microsoft.Framework.Logging": "1.0.0-beta4",
-    "Microsoft.Framework.Logging.Console": "1.0.0-beta4"
+    "Microsoft.Framework.Logging.Console": "1.0.0-beta4" 
   },
 
   "commands": {

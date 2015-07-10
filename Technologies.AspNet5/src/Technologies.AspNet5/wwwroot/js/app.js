@@ -1,7 +1,7 @@
 ﻿(function (window, angular) {
     'use strict';
 
-    window.app = angular.module('app', ['ui.bootstrap']);
+    window.app = angular.module('technologiesApp', ['ui.bootstrap']);
 
     app.factory('modules', function () {
         return [

@@ -1,0 +1,31 @@
+﻿@addTagHelper "*, Microsoft.AspNet.Mvc.TagHelpers"
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+// ViewBag.Title = "Home Page";
+}
+<input id="test" />
+@section scripts{
+@*<script src="~/lib/jquery/jquery.js"></script>
+<script src="~/js/happysuites/jquery.happysuites.js"></script>*@
+    <environment names="Development">
+        <script src="~/lib/jquery/jquery.js"></script>
+        <script src="~/js/happysuites/jquery.happysuites.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="//ajax.aspnetcdn.com/ajax/jquery/jquery-1.10.2.min.js"
+                asp-fallback-src="~/lib/jquery/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="~/js/happysuites/jquery.happysuites.min.js"></script>
+    </environment>
+
+    <script>
+        $(function () {
+            $('#test').on('change', function () {
+                $(this).hs().alert();
+            })
+        })
+    </script>
+}

@@ -1,12 +1,11 @@
-﻿@model Technologies.AspNet5.Models.IconsModel
-@{
+﻿@{
     ViewBag.Title = "Icons";
 }
 <header class="navbar navbar-fixed-top navbar-default">
     <div class="navbar-inner">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="http://angular-ui.github.io/">Technologies</a>
+                <a class="navbar-brand" href="@Url.Content("~/")">@AppSettings.Options.SiteTitle</a>
             </div>
 
             <div class="container">
@@ -30,41 +29,36 @@
     <header class="jumbotron" id="overview">
         <div class="container">
             <h1>Icons</h1>
-            <p>The companion suite(s) to the <a href="http://angularjs.org">AngularJS</a> framework.</p>
+            <p>Glyphicons & Font Awesome</p>
         </div>
     </header>
 
     <div class="container">
         <section id="glyphicons">
             <h1 class="page-header">Glyphicons</h1>
-            <ul>
-                <li ng-repeat="icon in Glyphicons">
-                    <span class="glyphicon {{icon}}"></span>
-                </li>
-            </ul>
+            <div class="row">
+                <div class="col-md-4 col-sm-3 icon-cell" ng-repeat="icon in Glyphicons">
+                    <i class="glyphicon {{icon}}"></i>&nbsp;{{icon}}
+                </div>
+            </div>
         </section>
         <section id="fontawesome">
             <h1 class="page-header">Font Awesome</h1>
-            
-            <ul>
-                <li ng-repeat="icon in FontAwesome">
-                    <span class="fa {{icon}}"></span>
-                </li>
-            </ul>
+            <div class="row">
+                <div class="col-md-4 col-sm-3 icon-cell" ng-repeat="icon in FontAwesome">
+                    <i class="fa {{icon}}"></i>&nbsp;{{icon}}
+                </div>
+            </div>
         </section>
     </div>
 </div>
 
 @section scripts
 {
-    <script>
-        angular.module('app', []).
-            controller('IconsCtrl', function ($scope, $http) {
-                $http.get('/icons/geticons').
-                    success(function (data) {
-                        $scope.Glyphicons = data.Glyphicons;
-                        $scope.FontAwesome = data.FontAwesome;
-                    });
-            });
-    </script>
+    <environment names="Development">
+        <script src="~/js/app-icons-index.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/js/app-icons-index.min.js"></script>
+    </environment>
 }

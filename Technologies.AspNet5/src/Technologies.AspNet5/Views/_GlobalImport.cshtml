@@ -1,1 +1,4 @@
-﻿@addTagHelper "*, Microsoft.AspNet.Mvc.TagHelpers"
+﻿@using Technologies.AspNet5
+@using Microsoft.Framework.OptionsModel
+@addTagHelper "*, Microsoft.AspNet.Mvc.TagHelpers"
+@inject IOptions<AppSettings> AppSettings

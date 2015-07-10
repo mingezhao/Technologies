@@ -1,4 +1,4 @@
-/// <binding />
+/// <binding BeforeBuild='min' />
 /*
 This file in the main entry point for defining grunt tasks and using grunt plugins.
 Click here to learn more. http://go.microsoft.com/fwlink/?LinkID=513275&clcid=0x409
@@ -44,6 +44,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask("install", ["clean", "bower:install"]);
     grunt.registerTask("min", ["cssmin", "uglify"]);
+    grunt.registerTask("clean", ["clean"]);
 
     grunt.loadNpmTasks("grunt-bower-task");
     grunt.loadNpmTasks("grunt-contrib-cssmin");

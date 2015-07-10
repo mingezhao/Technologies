@@ -42,7 +42,7 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask("install", ["clean", "bower:install"]);
+    grunt.registerTask("install", ["bower:install"]);
     grunt.registerTask("min", ["cssmin", "uglify"]);
     grunt.registerTask("clean", ["clean"]);
 

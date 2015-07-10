@@ -6,6 +6,7 @@
     "jquery": "2.1.4",
     "bootstrap": "3.3.5",
     "angular": "1.4.2",
+    "angular-bootstrap": "0.13.0",
     "angular-ui": "0.4.0",
     "font-awesome": "*"
   },
@@ -21,8 +22,11 @@
     "angular": {
       "": "*.{js,css,map,gzip}"
     },
+    "angular-bootstrap": {
+      "": "*.*"
+    },
     "angular-ui": {
-      "": "build/*.*"
+      "": "build/*.{js,css}"
     },
     "font-awesome": {
       "css": "css/*.*",

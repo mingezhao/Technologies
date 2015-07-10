@@ -1,4 +1,58 @@
-﻿<header class="navbar navbar-fixed-top navbar-default">
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<header class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-3" ng-click="isCollapsed = !isCollapsed">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand visible-xs" href="@Url.Content("~/")">@AppSettings.Options.SiteTitle</a>
+            </div>
+            <nav class="hidden-xs">
+                <a class="navbar-brand" href="@Url.Content("~/")">@AppSettings.Options.SiteTitle</a>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown" dropdown>
+                        <a role="button" class="dropdown-toggle" dropdown-toggle>
+                            Directives <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#accordion">Accordion</a></li>
+                            <li><a href="#alert">Alert</a></li>
+                            <li><a href="#buttons">Buttons</a></li>
+                            <li><a href="#carousel">Carousel</a></li>
+                            <li><a href="#collapse">Collapse</a></li>
+                            <li><a href="#datepicker">Datepicker</a></li>
+                            <li><a href="#dropdown">Dropdown</a></li>
+                            <li><a href="#modal">Modal</a></li>
+                            <li><a href="#pagination">Pagination</a></li>
+                            <li><a href="#popover">Popover</a></li>
+                            <li><a href="#progressbar">Progressbar</a></li>
+                            <li><a href="#rating">Rating</a></li>
+                            <li><a href="#tabs">Tabs</a></li>
+                            <li><a href="#timepicker">Timepicker</a></li>
+                            <li><a href="#tooltip">Tooltip</a></li>
+                            <li><a href="#typeahead">Typeahead</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#getting_started">Getting started</a></li>
+                </ul>
+            </nav>
+            <nav class="visible-xs" collapse="!isCollapsed">
+                <ul class="nav navbar-nav">
+                    <li><a href="#getting_started" ng-click="isCollapsed = !isCollapsed">Getting started</a></li>
+                    <li><a href="#directives_small" ng-click="isCollapsed = !isCollapsed">Directives</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+@*<header class="navbar navbar-fixed-top navbar-default">
     <div class="navbar-inner">
         <div class="container">
             <div class="navbar-header">
@@ -23,16 +77,16 @@
             </div>
         </div>
     </div>
-</header>
+</header>*@
 <div>
     <header class="jumbotron" id="overview">
         <div class="container">
-            <h1>AngularUI</h1>
-            <p>The companion suite(s) to the <a href="http://angularjs.org">AngularJS</a> framework.</p>
+            <h1>@AppSettings.Options.SiteTitle</h1>
+            <p>asdfasdfasdfasdfasf</p>
         </div>
     </header>
 
-    <div class="container">
+    <div class="container" ng-controller="HomeCtrl">
         <section id="modules">
             <h1 class="page-header">Modules</h1>
             <p class="text-muted">
@@ -40,10 +94,10 @@
                 {{(modules| filter:searchText).length}} modules found
             </p>
             <div class="list-group">
-                <div ng-repeat="module in modules| filter:searchText | orderBy: 'name'" href="{{module.src}}" class="list-group-item">
+                <div ng-repeat="module in modules| filter:searchText | orderBy: 'name'" class="list-group-item">
                     <p class="pull-right">
-                        <a href="{{module.home}}" title="Home / Demo page" ng-if="module.home"><i class="fa fa-3x fa-home"></i></a>
-                        <a href="{{module.src}}" title="Code"><i class="fa fa-3x fa-github"></i></a>
+                        <a href="{{module.src}}" title="Home / Demo page"><i class="fa fa-3x fa-home"></i></a>
+                        @*<a href="{{module.src}}" title="Code"><i class="fa fa-3x fa-github"></i></a>*@
                     </p>
                     <h4 class="list-group-item-heading">{{module.name}}</h4>
                     <p class="list-group-item-text text-muted">{{module.desc}}</p>
@@ -53,3 +107,24 @@
         </section>
     </div>
 </div>
+<span class="dropdown" dropdown>
+    <a href class="dropdown-toggle" dropdown-toggle>
+        Click me for a dropdown, yo!
+    </a>
+    <ul class="dropdown-menu">
+        <li>asdfasdf</li>
+        <li>asdfasdf</li>
+        <li>asdfasdf</li>
+        <li>asdfasdf</li>
+    </ul>
+</span>
+
+@section scripts
+{
+    <environment names="Development">
+        <script src="~/js/app-home-index.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/js/app-home-index.min.js"></script>
+    </environment>
+}

@@ -17,16 +17,16 @@
       "fonts": "dist/fonts/*.*"
     },
     "jquery": {
-      "": "dist/*.*"
+      "": "dist/*.{js,css,map,gzip}"
     },
     "angular": {
       "": "*.{js,css,map,gzip}"
     },
     "angular-bootstrap": {
-      "": "*.*"
+      "": "*.{js,css,map,gzip}"
     },
     "angular-ui": {
-      "": "build/*.{js,css}"
+      "": "build/*.{js,css,map,gzip}"
     },
     "font-awesome": {
       "css": "css/*.*",

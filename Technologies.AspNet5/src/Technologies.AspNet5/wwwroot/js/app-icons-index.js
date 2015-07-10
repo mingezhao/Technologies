@@ -1,7 +1,7 @@
 ﻿(function (app, angular) {
     'use strict';
 
-    app.controller('MainCtrl', function ($scope, $http) {
+    app.controller('IconsCtrl', function ($scope, $http) {
         $http.get('/icons/geticons').
             success(function (data) {
                 $scope.Glyphicons = data.Glyphicons;

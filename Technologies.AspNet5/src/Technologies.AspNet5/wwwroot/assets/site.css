@@ -23,6 +23,7 @@
   color: #cdbfe3;
   background-color: #563d7c;
   background-image: url(../images/header.png);
+  margin-top: 50px;
 }
 .bs-header a {
   color: #fff;

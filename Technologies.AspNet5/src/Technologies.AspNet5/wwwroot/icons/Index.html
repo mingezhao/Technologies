@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html ng-app="technologiesApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body>
+    <header-banner></header-banner>
+    <div role="main">
+        <header-content module-key="asdf"></header-content>
+
+        <div class="container" ng-controller="IconsCtrl">
+            <section id="glyphicons">
+                <h1 class="page-header">Glyphicons</h1>
+                <div class="row">
+                    <div class="col-md-4 col-sm-3 icon-cell" ng-repeat="icon in Glyphicons">
+                        <i class="glyphicon {{icon}}"></i>&nbsp;{{icon}}
+                    </div>
+                </div>
+            </section>
+            <section id="fontawesome">
+                <h1 class="page-header">Font Awesome</h1>
+                <div class="row">
+                    <div class="col-md-4 col-sm-3 icon-cell" ng-repeat="icon in FontAwesome">
+                        <i class="fa {{icon}}"></i>&nbsp;{{icon}}
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="../lib/angular/angular.min.js"></script>
+    <script src="../lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="../assets/app.js"></script>
+    <script src="../assets/controllers/icons-index.js"></script>
+</body>
+</html>

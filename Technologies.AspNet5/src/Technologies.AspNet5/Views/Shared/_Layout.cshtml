@@ -22,7 +22,34 @@
     </environment>
 </head>
 <body>
-    @RenderBody()
+    <header class="navbar navbar-default navbar-fixed-top" ng-controller="HeaderCtrl">
+        <div class="navbar-inner">
+            <div class="container">
+                <nav>
+                    <a class="navbar-brand" href="@Url.Content("~/")">@AppSettings.Options.SiteTitle</a>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown" dropdown>
+                            <a role="button" class="dropdown-toggle" dropdown-toggle>
+                                Directives <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="module in modules | orderby : 'order'">
+                                    <a ng-href="{{module.src}}">{{module.name}}</a>
+                                </li>
+                            </ul>
+                        </li>
+                        @RenderSection("childmenus", required: false)
+                        <li><a href="https://github.com/mingezhao/Technologies"><i class="fa fa-github"></i>&nbsp;Git Hub</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="header-placeholder"></div>
+
+    <div role="main">
+        @RenderBody()
+    </div>
 
     <environment names="Development">
         @*<script src="~/lib/jquery/jquery.js"></script>*@
@@ -33,9 +60,9 @@
     </environment>
     <environment names="Staging,Production">
         @*<script src="//ajax.aspnetcdn.com/ajax/jquery/jquery-1.10.2.min.js"
-                asp-fallback-src="~/lib/jquery/jquery.min.js"
-                asp-fallback-test="window.jQuery">
-        </script>*@
+                    asp-fallback-src="~/lib/jquery/jquery.min.js"
+                    asp-fallback-test="window.jQuery">
+            </script>*@
         <script src="//ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/bootstrap.min.js"
                 asp-fallback-src="~/lib/bootstrap/js/bootstrap.min.js"
                 asp-fallback-test="window.jQuery">

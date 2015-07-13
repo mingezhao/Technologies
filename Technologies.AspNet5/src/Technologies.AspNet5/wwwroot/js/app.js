@@ -20,28 +20,9 @@
         ];
     });
 
-    app.directive('headerBanner', function () {
-        return {
-            restrict: 'E',
-            replace: true,
-            template: '<input maxlength="10"></input>',
-            link: function (scope, element, attrs, ctrl) {
-                ctrl.$validators.fax = function (modelValue, viewValue) {
-                    if (ctrl.$isEmpty(modelValue)) {
-                        return true;
-                    }
-
-                    if (FAX_REGEXP.test(viewValue)) {
-                        return true;
-                    }
-
-                    return false;
-                };
-            }
-        };
+    app.controller('HeaderCtrl', function ($scope, modules) {
+        $scope.modules = modules;
     });
-
-
 
     app.directive('headerContent', function () {
         return {

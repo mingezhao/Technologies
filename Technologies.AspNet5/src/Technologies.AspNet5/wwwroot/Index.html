@@ -1,7 +1,8 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="technologiesApp">
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
 
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css" />
@@ -9,7 +10,55 @@
     <link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
+    <header class="navbar navbar-default navbar-fixed-top" ng-controller="HeaderCtrl">
+        <div class="navbar-inner">
+            <div class="container">
+                <nav>
+                    <a class="navbar-brand" href="@Url.Content(" ~ />")">@AppSettings.Options.SiteTitle</a>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown" dropdown>
+                            <a role="button" class="dropdown-toggle" dropdown-toggle>
+                                Directives <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="module in modules">
+                                    <a ng-href="{{module.src}}">{{module.name}}</a>
+                                </li>
+                            </ul>
+                        </li>
+                        @RenderSection("childmenus", required: false)
+                        <li><a href="https://github.com/mingezhao/Technologies"><i class="fa fa-github"></i>&nbsp;Git Hub</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="header-placeholder"></div>
 
+    <div role="main">
+        <header-content title="2ef2e2ef" desc="asdfasdfasdf"></header-content>
+
+        <div class="container" ng-controller="HomeCtrl">
+            <section id="modules">
+                <h1 class="page-header">Modules</h1>
+                <p class="text-muted">
+                    <input class="form-control" autofocus="autofocus" style="max-width: 15em; display: inline-block;" ng-model="searchText" placeholder="search...">
+                    {{(modules| filter:searchText).length}} modules found
+                </p>
+                <div class="list-group">
+                    <div ng-repeat="module in modules| filter:searchText | orderBy: 'order'" class="list-group-item">
+                        <p class="pull-right">
+                            <a href="{{module.src}}" title="Home / Demo page"><i class="fa fa-3x fa-home"></i></a>
+                        </p>
+                        <h4 class="list-group-item-heading">{{module.name}}</h4>
+                        <p class="list-group-item-text text-muted">{{module.desc}}</p>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+    asdfasdf
     <script data-main="assets/script-reference" src="lib/requirejs/require.js"></script>
 </body>
 </html>

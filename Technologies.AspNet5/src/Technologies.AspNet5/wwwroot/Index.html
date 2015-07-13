@@ -10,31 +10,7 @@
     <link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
-    <header class="navbar navbar-default navbar-fixed-top" ng-controller="HeaderCtrl">
-        <div class="navbar-inner">
-            <div class="container">
-                <nav>
-                    <a class="navbar-brand" href="@Url.Content(" ~ />")">@AppSettings.Options.SiteTitle</a>
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown" dropdown>
-                            <a role="button" class="dropdown-toggle" dropdown-toggle>
-                                Directives <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li ng-repeat="module in modules">
-                                    <a ng-href="{{module.src}}">{{module.name}}</a>
-                                </li>
-                            </ul>
-                        </li>
-                        @RenderSection("childmenus", required: false)
-                        <li><a href="https://github.com/mingezhao/Technologies"><i class="fa fa-github"></i>&nbsp;Git Hub</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
-    <div class="header-placeholder"></div>
-
+    <header-banner></header-banner>
     <div role="main">
         <header-content title="2ef2e2ef" desc="asdfasdfasdf"></header-content>
 
@@ -54,11 +30,13 @@
                         <p class="list-group-item-text text-muted">{{module.desc}}</p>
                     </div>
                 </div>
-
             </section>
         </div>
     </div>
-    asdfasdf
-    <script data-main="assets/script-reference" src="lib/requirejs/require.js"></script>
+
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="assets/app.js"></script>
+    <script src="assets/controllers/index.js"></script>
 </body>
 </html>

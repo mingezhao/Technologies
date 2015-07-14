@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html ng-app="technologiesApp">
+<html ng-app="app">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,29 +10,33 @@
     <link rel="stylesheet" href="../assets/site.css" />
 </head>
 <body>
-    <header-banner></header-banner>
-    <div role="main">
-        <header-content module-key="asdf"></header-content>
-
-        <div class="container" ng-controller="IconsCtrl">
-            <section id="glyphicons">
-                <h1 class="page-header">Glyphicons</h1>
-                <div class="row">
-                    <div class="col-md-4 col-sm-3 icon-cell" ng-repeat="icon in Glyphicons">
-                        <i class="glyphicon {{icon}}"></i>&nbsp;{{icon}}
-                    </div>
+    <header-body module-key="icons">
+        <header-menus>
+            <li><a href="#glyphicons">Glyphicons</a></li>
+            <li><a href="#fontawesome">Font Awesome</a></li>
+        </header-menus> 
+    </header-body>
+    
+    <div class="container" ng-controller="IconsCtrl">
+        <section id="glyphicons">
+            <h1 class="page-header">Glyphicons</h1>
+            <div class="row">
+                <div class="col-md-4 col-sm-3 icon-cell" ng-repeat="icon in Glyphicons">
+                    <i class="glyphicon {{icon}}"></i>&nbsp;{{icon}}
                 </div>
-            </section>
-            <section id="fontawesome">
-                <h1 class="page-header">Font Awesome</h1>
-                <div class="row">
-                    <div class="col-md-4 col-sm-3 icon-cell" ng-repeat="icon in FontAwesome">
-                        <i class="fa {{icon}}"></i>&nbsp;{{icon}}
-                    </div>
+            </div>
+        </section>
+        <section id="fontawesome">
+            <h1 class="page-header">Font Awesome</h1>
+            <div class="row">
+                <div class="col-md-4 col-sm-3 icon-cell" ng-repeat="icon in FontAwesome">
+                    <i class="fa {{icon}}"></i>&nbsp;{{icon}}
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </div>
+
+    <footer-body></footer-body>
 
     <script src="../lib/angular/angular.min.js"></script>
     <script src="../lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>

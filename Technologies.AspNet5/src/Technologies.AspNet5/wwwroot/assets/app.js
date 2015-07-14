@@ -5,8 +5,10 @@
      * Config Module
      */
     angular.module('app.config', []).
-        factory('modules', function () {
-            return [
+        constant('config', {
+            siteTitle: 'Technologies',
+            siteRootUri: '/index.html',
+            modules: [
                 {
                     order: 1,
                     key: 'Icons',
@@ -21,8 +23,8 @@
                     src: '../jquery',
                     desc: '2222222'
                 }
-            ];
-        });
+            ]
+        })
 
     /**
      * Directives Module
@@ -33,9 +35,11 @@
      * Header Directive
      */
     angular.module('app.directives.header', []).
-        controller('HeaderCtrl', function ($scope, modules) {
-            this.getModuldes = function () {
-                return modules;
+        controller('HeaderCtrl', function ($scope, config) {
+            var modules = config.modules;
+
+            this.getConfig = function () {
+                return config;
             };
 
             this.getModule = function (key) {
@@ -76,11 +80,11 @@
                 template: function (element, attrs) {
                     var menusHtml =
                         '<nav>\n' +
-                        '   <a class="navbar-brand" href="">Technologies</a>\n' +
+                        '   <a class="navbar-brand" href="{{siteRootUri}}">{{siteTitle}}</a>\n' +
                         '   <ul class="nav navbar-nav">\n' +
                         '       <li class="dropdown" dropdown>\n' +
                         '           <span role="button" class="dropdown-toggle" dropdown-toggle>\n' +
-                        '               Directives <b class="caret"></b>\n' +
+                        '               Modules <b class="caret"></b>\n' +
                         '           </span>\n' +
                         '           <ul class="dropdown-menu">\n' +
                         '               <li ng-repeat="module in modules">\n' +
@@ -101,7 +105,10 @@
                     return menusHtml;
                 },
                 link: function (scope, element, attrs, headerCtrl) {
-                    scope.modules = headerCtrl.getModuldes();
+                    var config = headerCtrl.getConfig();
+                    scope.modules = config.modules;
+                    scope.siteTitle = config.siteTitle;
+                    scope.siteRootUri = config.siteRootUri;
                 }
             };
         }).
@@ -153,7 +160,9 @@
         }).
         run(function ($templateCache) {
             $templateCache.put('template/footer-body.html',
-                '<footer class="bs-header text-center">\n' +
+                '<footer class="footer">\n' +
+                '   <div class="container">\n' +
+                '   </div>\n' +
                 '</footer>');
         });
 

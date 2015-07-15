@@ -39,6 +39,8 @@
     },
     "jquery-file-upload": {
       "js": "js/*.*",
+      "js/vendor": "js/vendor/*.*",
+      "js/cors": "js/cors/*.*",
       "css": "css/*.*",
       "img": "img/*.*"
     }

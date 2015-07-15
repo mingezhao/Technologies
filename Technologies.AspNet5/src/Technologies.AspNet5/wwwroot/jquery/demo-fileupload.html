@@ -1,72 +1,86 @@
-﻿<div class="bs-callout bs-callout-info">
-    <h4>资料参考</h4>
-    <p>官网 Demo: <a href="https://blueimp.github.io/jQuery-File-Upload/" target="_blank">https://blueimp.github.io/jQuery-File-Upload/</a></p>
-    <p>Git: <a href="https://github.com/blueimp/jQuery-File-Upload">https://github.com/blueimp/jQuery-File-Upload</a></p>
-</div>
-<h3>实例演示</h3>
-<div id="dropzone" class="fade well">Drop files here</div>
-<div class="fileupload-buttonbar">
-    <form method="post" enctype="multipart/form-data">
-        <span class="btn btn-success fileinput-button">
-            <i class="glyphicon glyphicon-plus"></i>
-            <span>添加文件...</span>
-            <input id="fileupload" type="file" name="files[]" multiple />
-        </span>
-        <button type="submit" class="btn btn-primary start">
-            <i class="glyphicon glyphicon-upload"></i>
-            <span>开始上传</span>
-        </button>
-        <button type="reset" class="btn btn-warning cancel">
-            <i class="glyphicon glyphicon-ban-circle"></i>
-            <span>取消上传</span>
-        </button>
-    </form>
-</div>
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
 
-<script src="../lib/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
-<script src="../lib/jquery-file-upload/js/jquery.iframe-transport.js"></script>
-<script src="../lib/jquery-file-upload/js/jquery.fileupload.js"></script>
-<script>
-    $(function () {
-        $('#fileupload').fileupload({
-            autoUpload: false,
-            acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
-            dropZone: $('#dropzone')
-        }).
-        on('fileuploadadd', function (e, data) {
-            alert('asdf');
-        });
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body>
+    <div class="bs-callout bs-callout-info">
+        <h4>资料参考</h4>
+        <p>官网 Demo: <a href="https://blueimp.github.io/jQuery-File-Upload/" target="_blank">https://blueimp.github.io/jQuery-File-Upload/</a></p>
+        <p>Git: <a href="https://github.com/blueimp/jQuery-File-Upload">https://github.com/blueimp/jQuery-File-Upload</a></p>
+    </div>
+    <h3>实例演示</h3>
+    <div id="dropzone" class="fade well">Drop files here</div>
+    <div class="fileupload-buttonbar">
+        <form method="post" enctype="multipart/form-data">
+            <span class="btn btn-success fileinput-button">
+                <i class="glyphicon glyphicon-plus"></i>
+                <span>添加文件...</span>
+                <input id="fileupload" type="file" name="files[]" multiple />
+            </span>
+            <button type="submit" class="btn btn-primary start">
+                <i class="glyphicon glyphicon-upload"></i>
+                <span>开始上传</span>
+            </button>
+            <button type="reset" class="btn btn-warning cancel">
+                <i class="glyphicon glyphicon-ban-circle"></i>
+                <span>取消上传</span>
+            </button>
+        </form>
+    </div>
 
-        $(document).on('dragover', function (e) {
-            var dropZone = $('#dropzone'),
-                timeout = window.dropZoneTimeout;
-            if (!timeout) {
-                dropZone.addClass('in');
-            } else {
-                clearTimeout(timeout);
-            }
-            var found = false,
-                node = e.target;
-            do {
-                if (node === dropZone[0]) {
-                    found = true;
-                    break;
+    <script src="../lib/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
+    <script src="../lib/jquery-file-upload/js/jquery.iframe-transport.js"></script>
+    <script src="../lib/jquery-file-upload/js/jquery.fileupload.js"></script>
+    <script>
+        $(function () {
+            $('#fileupload').fileupload({
+                autoUpload: false,
+                acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+                dropZone: $('#dropzone')
+            }).
+            on('fileuploadadd', function (e, data) {
+                alert('asdf');
+            });
+
+            $(document).on('dragover', function (e) {
+                var dropZone = $('#dropzone'),
+                    timeout = window.dropZoneTimeout;
+                if (!timeout) {
+                    dropZone.addClass('in');
+                } else {
+                    clearTimeout(timeout);
                 }
-                node = node.parentNode;
-            } while (node != null);
-            if (found) {
-                dropZone.addClass('hover');
-            } else {
-                dropZone.removeClass('hover');
-            }
-            window.dropZoneTimeout = setTimeout(function () {
-                window.dropZoneTimeout = null;
-                dropZone.removeClass('in hover');
-            }, 100);
-        });
+                var found = false,
+                    node = e.target;
+                do {
+                    if (node === dropZone[0]) {
+                        found = true;
+                        break;
+                    }
+                    node = node.parentNode;
+                } while (node != null);
+                if (found) {
+                    dropZone.addClass('hover');
+                } else {
+                    dropZone.removeClass('hover');
+                }
+                window.dropZoneTimeout = setTimeout(function () {
+                    window.dropZoneTimeout = null;
+                    dropZone.removeClass('in hover');
+                }, 100);
+            });
 
-        $(document).on('drop dragover', function (e) {
-            e.preventDefault();
+            $(document).on('drop dragover', function (e) {
+                e.preventDefault();
+            });
         });
-    });
-</script>
+    </script>
+</body>
+</html>

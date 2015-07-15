@@ -9,7 +9,8 @@
     "angular-bootstrap": "0.13.0",
     "angular-ui": "0.4.0",
     "requirejs": "2.1.19",
-    "font-awesome": "4.3.0"
+    "font-awesome": "4.3.0",
+    "jquery-file-upload": "9.10.4"
   },
   "exportsOverride": {
     "bootstrap": {
@@ -35,6 +36,11 @@
     "font-awesome": {
       "css": "css/*.*",
       "fonts": "fonts/*.*"
+    },
+    "jquery-file-upload": {
+      "js": "js/*.*",
+      "css": "css/*.*",
+      "img": "img/*.*"
     }
   }
 }

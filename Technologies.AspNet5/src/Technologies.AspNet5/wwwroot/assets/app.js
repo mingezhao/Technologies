@@ -24,7 +24,7 @@
                     desc: '2222222'
                 }
             ]
-        })
+        });
 
     /**
      * Directives Module

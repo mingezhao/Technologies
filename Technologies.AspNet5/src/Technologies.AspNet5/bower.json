@@ -9,7 +9,7 @@
     "angular-bootstrap": "0.13.0",
     "angular-ui": "0.4.0",
     "requirejs": "2.1.19",
-    "font-awesome": "*"
+    "font-awesome": "4.3.0"
   },
   "exportsOverride": {
     "bootstrap": {

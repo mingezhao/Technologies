@@ -11,18 +11,19 @@
             modules: [
                 {
                     order: 1,
+                    key: 'jQuery',
+                    name: 'jQuery',
+                    src: '/jquery/index',
+                    desc: ''
+                },
+                {
+                    order: 2,
                     key: 'Icons',
                     name: 'Icons',
                     src: '/icons/index.html',
                     desc: 'Glyphicons & Font Awesome',
                 },
-                {
-                    order: 2,
-                    key: 'jQuery',
-                    name: 'jQuery',
-                    src: '../jquery',
-                    desc: '2222222'
-                }
+                
             ]
         });
 

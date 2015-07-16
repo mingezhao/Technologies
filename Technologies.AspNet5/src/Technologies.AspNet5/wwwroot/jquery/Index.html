@@ -16,6 +16,10 @@
     </header-body>
 
     <div class="container" ng-controller="JQueryCtrl">
+        <section id="datepicker">
+            <h1 class="page-header">Datepicker</h1>
+            <ng-include src="'datepicker/index.html'"></ng-include>
+        </section>
         <section id="filupload">
             <h1 class="page-header">File Upload</h1>
             <ng-include src="'demo-fileupload.html'"></ng-include>
@@ -24,7 +28,7 @@
 
     <footer-body></footer-body>
 
-    <script src="../lib/jquery/jquery.js"></script>
+    
     <script src="../lib/angular/angular.js"></script>
     <script src="../lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="../assets/app.js"></script>

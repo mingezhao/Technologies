@@ -10,6 +10,7 @@
     "angular-ui": "0.4.0",
     "requirejs": "2.1.19",
     "font-awesome": "4.3.0",
+    "jquery-ui": "1.11.4",
     "jquery-file-upload": "9.10.4"
   },
   "exportsOverride": {
@@ -36,6 +37,9 @@
     "font-awesome": {
       "css": "css/*.*",
       "fonts": "fonts/*.*"
+    },
+    "jquery-ui": {
+      "": "js/*.{js,css,map,gzip}"
     },
     "jquery-file-upload": {
       "js": "js/*.*",
